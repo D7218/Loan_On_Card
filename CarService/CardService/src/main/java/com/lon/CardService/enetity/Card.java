@@ -1,4 +1,5 @@
-package com.lon.LoanService.entity;
+package com.lon.CardService.enetity;
+
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,28 +7,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "loan_service")
-public class Loan {
+@Table(name = "card_service")
+public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long customerId;
-    
-    private Long cardId;
-    private Double amount;
+    private String cardNumber;
+    private Double creditLimit;
+    private Double availableLimit;
     private String status;
-    private Double interestRate;
-    private Integer tenure;
-    private LocalDate createdDate;
-    private LocalDate approvedDate;
-
-
 }

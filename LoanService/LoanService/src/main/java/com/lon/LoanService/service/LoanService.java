@@ -1,27 +1,19 @@
 package com.lon.LoanService.service;
 
 import com.lon.LoanService.entity.Loan;
-import com.lon.LoanService.kafkaProducer.LoanEventProducer;
-import com.lon.LoanService.repository.LoanRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class LoanService {
+import java.util.List;
 
-    @Autowired
-    private LoanRepo repository;
 
-    @Autowired
-    private LoanEventProducer producer;
+public interface LoanService {
 
-    public Loan applyLoan(Loan loan) {
-        loan.setStatus("APPROVED");
-        Loan savedLoan = repository.save(loan);
+    Loan createLoan(Loan loan);
 
-        // Publish Kafka event
-        producer.sendLoanApprovedEvent(savedLoan.getId());
+    Loan getLoanById(Long loanId);
 
-        return savedLoan;
-    }
+    List<Loan> getLoansByCustomerId(Long customerId);
+
+    Loan approveLoan(Long loanId);
+
+    void deleteLoan(Long loanId);
 }

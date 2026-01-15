@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Transaction")
+@RequestMapping("/transaction")
 public class TransactionController {
 
     @Autowired

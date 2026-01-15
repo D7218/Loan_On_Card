@@ -15,15 +15,18 @@ public class TransactionService {
     @Autowired
     private TransactionRepo repository;
 
-    public void createTransaction(TransactionDto event){
+    public void createTransaction(TransactionDto event) {
         Transaction tx = new Transaction();
         tx.setLoanId(event.getLoanId());
         tx.setCustomerId(event.getCustomerId());
         tx.setAmount(event.getAmount());
-        tx.setStatus("DISBURSEMENT");
-        tx.setStatus("SUCCESS");
+
+        tx.setType("DISBURSEMENT");   // 👈 FIX: set type
+        tx.setStatus("SUCCESS");      // 👈 FIX: set status
+
         repository.save(tx);
     }
+
     public List<Transaction> getALlTransaction(){
         return repository.findAll();
 }

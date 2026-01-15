@@ -13,6 +13,7 @@ public class TransactionCunsumer {
     @KafkaListener(topics = "loan-approved-topics",
                     groupId = "transaction-group",
             containerFactory = "kafkaListenerContainerFactory")
+
     public void cunsume(TransactionDto event){
         service.createTransaction(event);
     }

@@ -3,5 +3,8 @@ package com.lon.LoanService.repository;
 import com.lon.LoanService.entity.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface LoanRepo extends JpaRepository<Loan, Long> {
+    List<Loan> findByCustomerId(Long customerId);
 }

@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lon.CardService</groupId>
-	<artifactId>CarService</artifactId>
+	<artifactId>CardService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CarService</name>
 	<description>this is the project of loan On Card</description>
