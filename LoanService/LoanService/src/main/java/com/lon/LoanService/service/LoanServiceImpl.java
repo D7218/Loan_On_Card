@@ -16,17 +16,20 @@ public class LoanServiceImpl implements LoanService{
 
     @Override
     public Loan createLoan(Loan loan) {
-        loan.setStatus("PENDIGN");
+        loan.setStatus("PENDING");
         loan.setCreatedDate(LocalDate.now());
 
-        if (loan.getAmount()>100000){
+        if (loan.getAmount()>10000){
             loan.setInterestRate(12.5);
         }else{
             loan.setInterestRate(10.5);
         }
         return repository.save(loan);
     }
-
+    @Override
+    public List<Loan> getAll(){
+        return repository.findAll();
+}
     @Override
     public Loan getLoanById(Long loanId) {
         return repository.findById(loanId)
@@ -42,7 +45,7 @@ public class LoanServiceImpl implements LoanService{
     public Loan approveLoan(Long loanId) {
         Loan loan = getLoanById(loanId);
         loan.setStatus("APPROVED");
-
+        loan.setApprovedDate(LocalDate.now());
         return repository.save(loan) ;
     }
 

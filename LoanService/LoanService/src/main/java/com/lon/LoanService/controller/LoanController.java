@@ -20,6 +20,10 @@ public class LoanController {
       public ResponseEntity<Loan> createLoan( @RequestBody Loan loan){
         return new ResponseEntity<>(service.createLoan(loan), HttpStatus.CREATED);
     }
+    @GetMapping
+    public ResponseEntity<List<Loan>> getAll(){
+        return ResponseEntity.ok(service.getAll());
+    }
     // getLoan by Id
     @GetMapping("/{loanId}")
    public ResponseEntity<Loan> getLoanById(@PathVariable Long loanId){
@@ -33,6 +37,7 @@ public class LoanController {
    public ResponseEntity<Loan> approvedLoan(@PathVariable Long loanId){
         return ResponseEntity.ok(service.approveLoan(loanId));
    }
+   @DeleteMapping("/{loanId}")
    public ResponseEntity<String> deleteLoan (@PathVariable Long loanId){
         service.deleteLoan(loanId);
         return ResponseEntity.ok("Loan deleted Successfully");

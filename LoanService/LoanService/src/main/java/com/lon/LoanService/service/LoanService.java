@@ -9,6 +9,8 @@ public interface LoanService {
 
     Loan createLoan(Loan loan);
 
+    List<Loan> getAll();
+
     Loan getLoanById(Long loanId);
 
     List<Loan> getLoansByCustomerId(Long customerId);
